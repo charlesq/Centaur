@@ -18,7 +18,7 @@ void merge_sort<T,C>::merge(size_t s, size_t e)
     size_t m = (s+e)/2, i = s, j = m; 
     size_t k = 0;
     while(i < m && j < e)
-        h[k++] = c(a[j], a[i])? a[i++]: a[j++];
+        h[k++] = c(a[j], a[i])? a[j++]: a[i++];
     while(i < m)
         h[k++] = a[i++];  
     while(j < e)

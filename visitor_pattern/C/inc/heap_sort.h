@@ -8,9 +8,11 @@
 template <typename T, typename C>
 class heap_sort: public accept_if<T, C>
 {
+    using accept_if<T,C>::accept;
     T *a;
     size_t sz;
 public:
+    heap_sort(void):a(NULL), sz(0) {};
     void init(T *ar, size_t s)
     {
         a = ar;
@@ -32,6 +34,10 @@ public:
     const char *get_name(void) const 
     {
         return "Heap Sort";
+    };
+    void accept(visitor<T,C> *v)
+    {
+        v->visit(this);
     };
 
 };

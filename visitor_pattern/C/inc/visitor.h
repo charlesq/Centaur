@@ -6,47 +6,33 @@
 #include <cstdlib>
 #include <algorithm>
 #include <cstring>
+
+template <typename T, typename C>
+class bubble_sort;
 template <typename T, typename C>
 class heap_sort;
 template <typename T, typename C>
 class quick_sort;
 template <typename T, typename C>
-class  bubble_sort;
+class  quick_sort;
 template <typename T, typename C>
 class merge_sort;
 template <typename T, typename C>
 class insert_sort;
 template <typename T, typename C>
 class radix_sort;
-/*
-#define VISITOR_BODY()\
-                { \
-              fisher_yates_shuffle();\
-              std::cout << "running " <<  std::endl;\
-              s->init(a, sz);\
-              s->do_work();\
-              s->end();\
-             }
 
-#define VISITOR_IMP(cl, T, C) \
-          void  cl::visit(quick_sort<T,C> *s)\
-          VISITOR_BODY() \
-          void cl::visit(heap_sort<T,C> *s)\
-          VISITOR_BODY() \
-          void  cl::visit(insert_sort<T,C> *s)\
-          VISITOR_BODY() \
-          void cl::visit(bubble_sort<T,C> *s)\
-          VISITOR_BODY() \
-          void  cl::visit(merge_sort<T,C> *s)\
-          VISITOR_BODY() \
-          void cl::visit(radix_sort<T,C> *s)\
-          VISITOR_BODY()
-*/
 #define VISITOR_DECLARE(T, C) \
+          virtual void  visit(bubble_sort<T,C> *s);\
           virtual void  visit(quick_sort<T,C> *s);\
           virtual void  visit(heap_sort<T,C> *s);\
-          virtual void  visit(bubble_sort<T,C> *s);\
           virtual void  visit(radix_sort<T,C> *s);\
+          virtual void  visit(merge_sort<T,C> *s);\
+          virtual void  visit(insert_sort<T,C> *s);
+#define VISITOR_DECLARE_P(T, C) \
+          virtual void  visit(bubble_sort<T,C> *s);\
+          virtual void  visit(quick_sort<T,C> *s);\
+          virtual void  visit(heap_sort<T,C> *s);\
           virtual void  visit(merge_sort<T,C> *s);\
           virtual void  visit(insert_sort<T,C> *s);
 
@@ -73,6 +59,16 @@ public:
     {
         srand(time(NULL));
     }; 
+    bool isSorted(void)const
+    {
+        C c;
+        for (size_t i = 0; i +1 < sz; ++i)
+        {
+           if (c(a[i+1],a[i]))
+              return false;
+        }
+        return true;
+    }
     virtual void print_array(void) final
     {
        #define COUNT 10
@@ -85,13 +81,12 @@ public:
        }
        std::cout << std::endl;
     };
-    virtual void visit(quick_sort<T,C> *) = 0;
-    virtual void visit(heap_sort<T,C> *) = 0;
-    virtual void visit(bubble_sort<T,C> *) = 0;
-    virtual void visit(merge_sort<T,C> *) = 0;
-    virtual void visit(insert_sort<T,C> *) = 0;
-    virtual void visit(radix_sort<T,C> *) = 0;
-
+    virtual void visit(bubble_sort<T,C> *) {};
+    virtual void visit(insert_sort<T,C> *) {};
+    virtual void visit(quick_sort<T,C> *) {};
+    virtual void visit(merge_sort<T,C> *) {};
+    virtual void visit(heap_sort<T,C> *) {};
+    virtual void visit(radix_sort<T,C> *) {} ;
     virtual ~visitor()
     {
     };

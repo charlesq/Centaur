@@ -1,0 +1,34 @@
+1. Notes on the C++ part
+
+   In this snippet, each of the ingredient sorting algorithm is
+   implemented as an element, which support an accept method;
+   and an algorithms composite class holds all element objects.
+   By this arrangement, when a visitor visits the composite class
+   instance, all ingredient elements will be visited accordingly.
+
+   A visitor class  implements visit methods for all applicable
+   algorithm element classes. The function of a visitor class
+   is to provision an array of template-typed elements and feed
+   the array to each ingredient sorting algorithm element in serial
+   temperal sequence for sorting.
+
+   Prior to a sorting run, the visitor will shuffle the array;
+   After a run, it will test whehter the array is properly ordered.
+
+   Two concreate visitors have been implmenetd, int_visitor and
+   pair_visitor class respectively.
+
+   int_visitor provisions an array of integers while pair_visitor
+   provisions an array of paired numbers for sorting.
+
+   There are in total six sorting algorithms implemented as follow:
+
+     Insert Sort, Bubble Sort, Heap Sort, 
+     Merge Sort, Quick Sort, Radix Sort
+     (Radix Sort utilizes counting sort to sort on each radix)
+
+   Dealing with template programming is the biggest challenge in this
+   exercise.
+
+2. Notes on the JAVA part
+

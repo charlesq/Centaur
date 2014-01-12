@@ -9,12 +9,13 @@
 template <typename T, typename C>
 class radix_sort: public accept_if<T, C>
 {
-
+    using accept_if<T,C>::accept;
 #define BASE 10
     T * a, * h;
     size_t sz;
     size_t acc[10];
 public:
+    radix_sort(void):a(NULL), sz(0) {};
     virtual void init(T *ar, size_t s)
     {
         a = ar;
@@ -29,6 +30,10 @@ public:
     virtual void end(void)
     {
         delete [] h;
+    };
+    void accept(visitor<T,C> *v)
+    {
+        v->visit(this);
     };
 };
 #endif

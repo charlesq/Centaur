@@ -5,17 +5,20 @@ ALGORITHMS := $(SRC)/heap_sort.cpp $(SRC)/quick_sort.cpp $(SRC)/merge_sort.cpp \
               $(SRC)/radix_sort.cpp $(SRC)/bubble_sort.cpp $(SRC)/insert_sort.cpp\
 INC := . 
 BIN := bin
-OBJS := $(BIN)/heap_sort.o $(BIN)/quick_sort.o $(BIN)/merge_sort.o $(BIN)/radix_sort.o \
-        $(BIN)/bubble_sort.o $(BIN)/insert_sort.o  $(BIN)/int_visitor.o $(BIN)/pair_visitor.o
+_OBJS := $(BIN)/bubble_sort.o  $(BIN)/int_visitor.o $(BIN)/main.o $(BIN)/quick_sort.o \
+        $(BIN)/merge_sort.o $(BIN)/radix_sort.o \
+        $(BIN)/heap_sort.o $(BIN)/insert_sort.o  $(BIN)/int_visitor.o\
+        $(BIN)/main.o  $(BIN)/pair_visitor.o
+OBJS := $(BIN)/int_visitor.o $(BIN)/pair_visitor.o $(BIN)/main.o
 
-$(BIN)/%.o: $(SRC)/%.cpp
+$(BIN)/%.o: $(SRC)/%.cpp # $(INC)/%.h $(INC)/accept_if.h
 	$(G++) -c -I. -o $@ $< 
-all: test $(OBJS)
+all:  $(BIN)/$(TARGET) 
  
-.PHONY: test 
-test:
-	make -p bin;
-
+$(BIN)/$(TARGET):$(OBJS)
+	mkdir -p  $(BIN);\
+	$(G++)  -o $@   $^
+	
 clean:
 	rm  bin/*
 

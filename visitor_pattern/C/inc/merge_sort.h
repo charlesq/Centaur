@@ -9,7 +9,7 @@
 template <typename T, typename C>
 class merge_sort: public accept_if<T,C>
 {
-
+    using accept_if<T,C>::accept;
     T* a, *h; /* helper memory used in merge procedure */ 
     size_t sz;
     /* merge two already sorted subarrays,
@@ -20,6 +20,7 @@ class merge_sort: public accept_if<T,C>
     /* the divide procedure */
     void divide(size_t s, size_t e);
 public:
+    merge_sort(void): a(NULL), sz(0) {};
     const char *get_name(void) const { return "Merge Sort"; };
     virtual void init(T*ar, size_t size)
     {
@@ -32,7 +33,9 @@ public:
         delete [] h;
     };
     virtual void do_work();
+    void accept(visitor<T,C> *v)
+    {
+        v->visit(this);
+    };
 };
-
-
 #endif

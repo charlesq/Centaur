@@ -23,10 +23,10 @@ void quick_sort<T,C>::sort(size_t s,  size_t e)
         return;
     /* randomize pivot element */
     size_t p = rand() % ( e - s) + s;
-    std::swap(a[p], a[0]);
+    std::swap(a[p], a[s]);
     p = partition(s,e);
-    quick_sort(s, p);
-    quick_sort(p + 1, e);
+    sort(s, p);
+    sort(p + 1, e);
 }
 template<typename T, typename C>
 void quick_sort<T,C>::do_work(void)

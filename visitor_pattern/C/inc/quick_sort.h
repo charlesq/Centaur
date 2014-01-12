@@ -12,12 +12,14 @@ class quick_sort: public accept_if<T, C>
 {
     T *a;
     size_t sz;
+    using accept_if<T,C>::accept;
    /* partition elements in interval [start, end),
       a divide procedure */
    size_t partition(size_t start, size_t end);
    /* the recursive sort procedure */ 
    void sort(size_t s, size_t e);
 public:
+   quick_sort(void):a(NULL),sz(0) {};
    virtual const char *get_name(void) const
    {
        return "Quick Sort";
@@ -30,6 +32,10 @@ public:
    };
    void end(void)
    {
+   };
+   void accept(visitor<T,C> *v)
+   {
+       v->visit(this);
    };
 };
 #endif

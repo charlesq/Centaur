@@ -6,7 +6,7 @@ void insert_sort<T,C>::do_work(void)
     for (size_t i = 1; i < sz; ++i)
         for (size_t j = 0; j < i; ++j)
         {
-            if (c(a[j+1], a[j]))
-                std::swap(a[j+1], a[j]);
+            if (c(a[i], a[j]))
+                std::swap(a[i], a[j]);
         }
 }

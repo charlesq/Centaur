@@ -4,6 +4,7 @@
 #include <functional>
 #include <inc/visitor.h>
 #include <utility>
+#include <inc/macro.h>
 using namespace std;
 typedef  pair<int, int> paired;
 
@@ -18,14 +19,12 @@ public:
 
 class pair_visitor:public visitor<paired ,paired_compare>
 {
-    paired *a;
-    size_t sz;
     void print_element(const paired &) const;
 public:
     pair_visitor(size_t s);
     const char *get_name(void) const { return "pair_visitor"; };
     virtual ~pair_visitor();
-    VISITOR_DECLARE(paired, paired_compare)
+    VISITOR_DECLARE_P(paired, paired_compare)
 };
 
 #endif

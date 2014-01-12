@@ -1,5 +1,5 @@
 #include <inc/bubble_sort.h>
-
+/*
 template <typename T, typename C>
 void bubble_sort<T,C>::do_work(void)
 {
@@ -10,4 +10,16 @@ void bubble_sort<T,C>::do_work(void)
             if (c(a[i+1], a[i]))
                 std::swap(a[i], a[i+1]);
         }
+}
+
+template <typename T, typename C>
+void bubble_sort<T,C>::init(T*ar, size_t s)
+{
+     a = ar;
+     sz = s;
+}
+*/
+template <typename T, typename C>
+void bubble_sort<T,C>::end(void)
+{
 }

@@ -27,4 +27,4 @@ void pair_visitor::print_element(const paired &a) const
     std::cout <<  "(" << a.first << "," << a.second << ") ";
 }
 
-VISITOR_IMP(pair_visitor, paired, paired_compare)
+VISITOR_IMP_P(pair_visitor, paired, paired_compare)
