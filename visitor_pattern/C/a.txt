@@ -1,0 +1,273 @@
+In file included from src/pair_visitor.cpp:7:0:
+:q
+:q
+src/pair_visitor.cpp:30:13: error: prototype for ‘void pair_visitor::visit(quick_sort<std::pair<int, int>, paired_compare>*)’ does not match any in class ‘pair_visitor’
+ VISITOR_IMP(pair_visitor, paired, paired_compare)
+             ^
+src/pair_visitor.cpp:30:1: note: in expansion of macro ‘VISITOR_IMP’
+ VISITOR_IMP(pair_visitor, paired, paired_compare)
+ ^
+In file included from ./inc/pair_visitor.h:5:0,
+                 from src/pair_visitor.cpp:1:
+./inc/visitor.h:51:25: error: candidates are: virtual void pair_visitor::visit(insert_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(insert_sort<T,C> *s);
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:50:25: error:                 virtual void pair_visitor::visit(merge_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(merge_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:49:25: error:                 virtual void pair_visitor::visit(radix_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(radix_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:48:25: error:                 virtual void pair_visitor::visit(bubble_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(bubble_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:47:25: error:                 virtual void pair_visitor::visit(heap_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(heap_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:46:25: error:                 virtual void pair_visitor::visit(quick_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(quick_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+In file included from src/pair_visitor.cpp:7:0:
+src/pair_visitor.cpp:30:13: error: prototype for ‘void pair_visitor::visit(heap_sort<std::pair<int, int>, paired_compare>*)’ does not match any in class ‘pair_visitor’
+ VISITOR_IMP(pair_visitor, paired, paired_compare)
+             ^
+./inc/macro.h:32:16: note: in definition of macro ‘VISITOR_IMP’
+           void cl::visit(heap_sort<T,C> *s)\
+                ^
+In file included from ./inc/pair_visitor.h:5:0,
+                 from src/pair_visitor.cpp:1:
+./inc/visitor.h:51:25: error: candidates are: virtual void pair_visitor::visit(insert_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(insert_sort<T,C> *s);
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:50:25: error:                 virtual void pair_visitor::visit(merge_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(merge_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:49:25: error:                 virtual void pair_visitor::visit(radix_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(radix_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:48:25: error:                 virtual void pair_visitor::visit(bubble_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(bubble_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:47:25: error:                 virtual void pair_visitor::visit(heap_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(heap_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:46:25: error:                 virtual void pair_visitor::visit(quick_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(quick_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+In file included from src/pair_visitor.cpp:7:0:
+src/pair_visitor.cpp:30:13: error: prototype for ‘void pair_visitor::visit(insert_sort<std::pair<int, int>, paired_compare>*)’ does not match any in class ‘pair_visitor’
+ VISITOR_IMP(pair_visitor, paired, paired_compare)
+             ^
+./inc/macro.h:34:17: note: in definition of macro ‘VISITOR_IMP’
+           void  cl::visit(insert_sort<T,C> *s)\
+                 ^
+In file included from ./inc/pair_visitor.h:5:0,
+                 from src/pair_visitor.cpp:1:
+./inc/visitor.h:51:25: error: candidates are: virtual void pair_visitor::visit(insert_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(insert_sort<T,C> *s);
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:50:25: error:                 virtual void pair_visitor::visit(merge_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(merge_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:49:25: error:                 virtual void pair_visitor::visit(radix_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(radix_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:48:25: error:                 virtual void pair_visitor::visit(bubble_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(bubble_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:47:25: error:                 virtual void pair_visitor::visit(heap_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(heap_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:46:25: error:                 virtual void pair_visitor::visit(quick_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(quick_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+In file included from src/pair_visitor.cpp:7:0:
+src/pair_visitor.cpp:30:13: error: prototype for ‘void pair_visitor::visit(bubble_sort<std::pair<int, int>, paired_compare>*)’ does not match any in class ‘pair_visitor’
+ VISITOR_IMP(pair_visitor, paired, paired_compare)
+             ^
+./inc/macro.h:36:16: note: in definition of macro ‘VISITOR_IMP’
+           void cl::visit(bubble_sort<T,C> *s)\
+                ^
+In file included from ./inc/pair_visitor.h:5:0,
+                 from src/pair_visitor.cpp:1:
+./inc/visitor.h:51:25: error: candidates are: virtual void pair_visitor::visit(insert_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(insert_sort<T,C> *s);
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:50:25: error:                 virtual void pair_visitor::visit(merge_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(merge_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:49:25: error:                 virtual void pair_visitor::visit(radix_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(radix_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:48:25: error:                 virtual void pair_visitor::visit(bubble_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(bubble_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:47:25: error:                 virtual void pair_visitor::visit(heap_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(heap_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:46:25: error:                 virtual void pair_visitor::visit(quick_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(quick_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+In file included from src/pair_visitor.cpp:7:0:
+src/pair_visitor.cpp:30:13: error: prototype for ‘void pair_visitor::visit(merge_sort<std::pair<int, int>, paired_compare>*)’ does not match any in class ‘pair_visitor’
+ VISITOR_IMP(pair_visitor, paired, paired_compare)
+             ^
+./inc/macro.h:38:17: note: in definition of macro ‘VISITOR_IMP’
+           void  cl::visit(merge_sort<T,C> *s)\
+                 ^
+In file included from ./inc/pair_visitor.h:5:0,
+                 from src/pair_visitor.cpp:1:
+./inc/visitor.h:51:25: error: candidates are: virtual void pair_visitor::visit(insert_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(insert_sort<T,C> *s);
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:50:25: error:                 virtual void pair_visitor::visit(merge_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(merge_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:49:25: error:                 virtual void pair_visitor::visit(radix_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(radix_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:48:25: error:                 virtual void pair_visitor::visit(bubble_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(bubble_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:47:25: error:                 virtual void pair_visitor::visit(heap_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(heap_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:46:25: error:                 virtual void pair_visitor::visit(quick_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(quick_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+In file included from src/pair_visitor.cpp:7:0:
+src/pair_visitor.cpp:30:13: error: prototype for ‘void pair_visitor::visit(radix_sort<std::pair<int, int>, paired_compare>*)’ does not match any in class ‘pair_visitor’
+ VISITOR_IMP(pair_visitor, paired, paired_compare)
+             ^
+./inc/macro.h:40:16: note: in definition of macro ‘VISITOR_IMP’
+           void cl::visit(radix_sort<T,C> *s)\
+                ^
+In file included from ./inc/pair_visitor.h:5:0,
+                 from src/pair_visitor.cpp:1:
+./inc/visitor.h:51:25: error: candidates are: virtual void pair_visitor::visit(insert_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(insert_sort<T,C> *s);
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:50:25: error:                 virtual void pair_visitor::visit(merge_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(merge_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:49:25: error:                 virtual void pair_visitor::visit(radix_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(radix_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:48:25: error:                 virtual void pair_visitor::visit(bubble_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(bubble_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:47:25: error:                 virtual void pair_visitor::visit(heap_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(heap_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+./inc/visitor.h:46:25: error:                 virtual void pair_visitor::visit(quick_sort<pair_visitor, paired_compare>*)
+           virtual void  visit(quick_sort<T,C> *s);\
+                         ^
+./inc/pair_visitor.h:29:5: note: in expansion of macro ‘VISITOR_DECLARE’
+     VISITOR_DECLARE(pair_visitor, paired_compare)
+     ^
+make: *** [bin/pair_visitor.o] Error 1
