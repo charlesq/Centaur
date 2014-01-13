@@ -1,19 +1,23 @@
 1. Notes on the C++ part
 
-   In this snippet, each of the ingredient sorting algorithm is
-   implemented as an element, which support an accept method;
-   and an algorithms composite class holds all element objects.
-   By this arrangement, when a visitor visits the composite class
-   instance, all ingredient elements will be visited accordingly.
+   In this snippet, each ingredient sorting algorithm is
+   implemented as an element in visitor pattern, which 
+   provides an accept method; then an algorithms composite
+   class holds element objects. By this arrangement, when a 
+   visitor visits the composite class, it will visit all 
+   ingredient elements contained inside accordingly. In
+   the source code, accept_if class impersons the abstract
+   element class.
 
-   A visitor class  implements visit methods for all applicable
-   algorithm element classes. The function of a visitor class
-   is to provision an array of template-typed elements and feed
-   the array to each ingredient sorting algorithm element in serial
-   temperal sequence for sorting.
-
-   Prior to a sorting run, the visitor will shuffle the array;
-   After a run, it will test whehter the array is properly ordered.
+   The abstract visitor class hosts visit methods for all applicable
+   algorithm element classes and a set of of other methods for testing
+   a sorting algorithms. Prior to a sorting run, the visitor will 
+   shuffle the array; After a run, it will verify whehter the array 
+   is properly ordered.
+ 
+   The main functionality of a concrete visitor class
+   is to provision an array of template-typed elements, aloing with
+   the functor class for comparing elements.
 
    Two concreate visitors have been implmenetd, int_visitor and
    pair_visitor class respectively.
