@@ -35,4 +35,22 @@
    exercise.
 
 2. Notes on the JAVA part
-
+2.1 Abstract element interface
+   interface Visitable<T extends Comparable<T>>
+2.2 Abstract visitor class
+   class Visitor<T extends Comparable<T>>
+2.3 Concrete element classes
+    class QuickSort<T extends Comparable<T>>
+    class HeapSort<T extends Comparable<T>>
+    class InsertSort<T extends Comparable<T>>
+    class BubbleSort<T extends Comparabl<T>>
+    class MergeSort<T extends Comparable<T>>
+2.4 Aggregate class
+    class Algorithms <T extends Comparable<T>>
+2.5 Concrete Visitor class
+    class BigNumVisitor (extends Visitable<BigInteger>)
+2.6 Unit testing with org.junit.*
+    SortingTests 
+2.7 Misc
+    Syntax for extending multiple interfaces in java generics
+    class A <T extends Number & Comparable<T>>
