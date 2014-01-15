@@ -8,7 +8,6 @@ public class MergeSort<T extends Comparable<T>> implements Visitable<T>
 {
     private transient T [] b;
     private transient T[] a;
-    @Override
     public void accept (Visitor<T> v)
     {
        v.visit(this); 
@@ -17,6 +16,7 @@ public class MergeSort<T extends Comparable<T>> implements Visitable<T>
     {
         this.a = a;
     }
+    @SuppressWarnings("unchecked")
     public void run()
     {
         b  = ( T[])Array.newInstance(a.getClass().getComponentType(), a.length);
