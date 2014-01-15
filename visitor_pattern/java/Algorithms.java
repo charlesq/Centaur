@@ -5,14 +5,19 @@ import java.util.Iterator;
 
 public class Algorithms <T extends Comparable<T>> implements Visitable<T>
 {
-    
+    ArrayList<Visitable<T>> elements = new ArrayList<Visitable<T>>(); 
+    public Algorithms ()
+    {
+        elements.add(new MergeSort<T>());
+        elements.add(new HeapSort<T>());
+        elements.add(new BubbleSort<T>());
+        elements.add(new InsertSort<T>());
+    }
     public void accept(Visitor<T> v) 
     {
-        (new QuickSort<T>()).accept(v);
-        (new MergeSort<T>()).accept(v);
-        (new HeapSort<T>()).accept(v);
-        (new BubbleSort<T>()).accept(v);
-        (new InsertSort<T>()).accept(v);
+        Iterator<Visitable<T>> it = elements.iterator();
+        while(it.hasNext())
+            it.next().accept(v);
         v.visit(this);
     }
     @Override
