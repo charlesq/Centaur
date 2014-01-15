@@ -13,6 +13,7 @@ public class Algorithms <T extends Comparable<T>> implements Visitable<T>
         elements.add(new BubbleSort<T>());
         elements.add(new InsertSort<T>());
     }
+    @Override
     public void accept(Visitor<T> v) 
     {
         Iterator<Visitable<T>> it = elements.iterator();
