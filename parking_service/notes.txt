@@ -1,0 +1,48 @@
+                 A Parking Structure with Valet Service
+
+1. The Model
+  1.1 The Imaginary Business Proposal
+
+   Mr.Smith presented a new business proposal and won the bid to run the parking service for PDX airport.   
+   The proposed new service operates as follows:
+     1. Set up two curb-size service points.  The one near the departure level is called checking point; 
+        and the other near the arrival level is called claim; 
+     2. A flyer needing service hands over his/her vehicle at the departure service point and receives 
+        a timestamped ticket.
+     3. An employee will move the vechicle to the nearby parking structure.
+        Key is kept in secure place in the parking structure.
+     5. Upon returning from travel, the flyer swipes the ticket issued, makes electronic payment.
+     6. An employee picks up the key from the secure place and deliver the vehicle to flyer at the claim point. 
+   
+  1.2 Main Entities in the Business 
+   1.2.1 Parking Servive
+      The entire business/firm.  
+   1.2.2 Parking Structure 
+     A facility comprises a fixed number of demarcated parking spots.
+     It offers additional functions as follow:
+         I. post availability and vacancy status
+            When closed, no vehicle will be admitted other than exiting.
+        II. track parking spot assignment specifics
+   1.2.3 Pagers
+        Internal text-based communication devices. 
+   1.2.4: Parking Spots
+     Each parking spots is monitored with a set of  sensors. One sensor detects occupancy and 
+     the second scans license number. 
+     
+     Each spot is also inatalled with an automatic pager.
+     
+  1.2.5 Service Points
+          Checking point: accept valet service requests, issue service tickets, park vechicles, 
+                          and do electronic stamping.
+                 The checking point is supervised with employees
+          Claim point: receive and verify tickets, unmanned.
+
+          Each sercie point is installed a pager.
+  1.2.6 employees
+        Each employee carries a pager with on duty.
+  
+2. Design Highlights
+    
+3. Logging
+
+4. Test
