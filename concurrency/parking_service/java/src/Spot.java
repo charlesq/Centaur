@@ -22,4 +22,11 @@ public class Spot extends Entity
          super(id);
          sensors = new Sensors(); 
      }
+     public synchronized boolean park(Vehicle v)
+     {
+         if (this.v != null)
+            return false;
+         this.v = v;
+         return true;
+     }
 } 

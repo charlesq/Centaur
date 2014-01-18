@@ -5,6 +5,7 @@ public class Employee extends Entity
     private  boolean onDuty;
     public final String name;// Added name later !!! 
     private ParkingService firm;
+    Vehicle v;/* vehicle being moved by the employee */ 
     public Employee (int id)
     {
         super(id);
