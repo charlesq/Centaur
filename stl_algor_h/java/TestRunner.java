@@ -8,6 +8,7 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 public class  TestRunner
 {
     @Test
@@ -23,7 +24,7 @@ public class  TestRunner
         assertEquals(a[2], c);
     }
     @Test
-    //@Ignore
+//    @Ignore
     public void testReverse()
     {
         Integer [] a = new Integer[20];
@@ -32,7 +33,7 @@ public class  TestRunner
         STL_ALGOR_H.reverse(a, 0, 20);
         for (int i = 0; i < 20; ++i)
         {
-            assertTrue("Failed", a[i].intValue() ==  19 -i); 
+            assertTrue("Failed", a[i].intValue() ==  a.length - 1 -i); 
         }
     }
     @Test
@@ -44,21 +45,35 @@ public class  TestRunner
             for (int k = 0; k < a.length; ++k)
                 a[k] = new Integer(k);
             STL_ALGOR_H.rotate(a, i);
-            /*
+            
             for (int j = 0; j < a.length; ++j)
                 System.out.print(a[j].toString() + " ");
-            System.out.println();*/
+            System.out.println();
             for (int j = 0; j < i; ++j)
             {
-               if (j == i)
+               if (j == a.length - i -1)
                {
-             //      assertTrue("failed", a[j] > a[j+1]);
+                   assertTrue("failed", a[j] > a[j+1]);
                    continue;
                }
-              // assertTrue("failed", a[j] < a[j+1]); 
+               assertTrue("failed", a[j] < a[j+1]); 
             }
         }
         
+    }
+    @Test
+    public void testNextPermutation()
+    {
+       Integer [] a = new Integer[4];
+       for (int i = 0; i < a.length; ++i)
+           a[i] = new Integer(i);
+       assertTrue(null, STL_ALGOR_H.next_permutation(a));  
+       assertEquals(a[3], new Integer(2));
+       for (int i = 0; i < a.length; ++i)
+           a[i] = new Integer(a.length - i - 1);
+       assertFalse(null, STL_ALGOR_H.next_permutation(a));
+      
+       
     }
     public static void main(String[] args)
     {

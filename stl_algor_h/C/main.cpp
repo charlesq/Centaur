@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 namespace exercise
 {
 
@@ -21,11 +22,10 @@ template <typename T> void swap(T &a, T &b)
 template <typename bidirectionalIterator>
 void reverse(bidirectionalIterator _first, bidirectionalIterator _last, bidirectionalIteratorTag)
 {
-    if (_first + 1 >= _last)
-        return;
-    while(_first != --_last && _first < _last)
+    while(_first != _last && _first != --_last)
        swap(*_first++, *_last); 
 }
+
 template <typename bidirectionalIterator>
 void rotate(bidirectionalIterator _first, bidirectionalIterator _middle, bidirectionalIterator _end, bidirectionalIteratorTag)
 {
@@ -34,6 +34,7 @@ void rotate(bidirectionalIterator _first, bidirectionalIterator _middle, bidirec
     reverse(_first, _end, bidirectionalIteratorTag());
     reverse(_first, _end - _middle + _first, bidirectionalIteratorTag() );
     reverse(_end -_middle + _first , _end, bidirectionalIteratorTag());
+    
 }
 template <typename forwardIterator>
 void rotate(forwardIterator _first, forwardIterator _middle, forwardIterator _last)
@@ -50,8 +51,10 @@ void rotate(forwardIterator _first, forwardIterator _middle, forwardIterator _la
             j = _middle;
     }
 }
+
+
 template<typename bidirectionalIterator>
-bool next_permute(bidirectionalIterator _first, bidirectionalIterator _end, bidirectionalIteratorTag)
+bool next_permutation(bidirectionalIterator _first, bidirectionalIterator _end, bidirectionalIteratorTag)
 {
     bidirectionalIterator __first = _first;
     if (_first + 1 >= _end)
@@ -71,24 +74,24 @@ bool next_permute(bidirectionalIterator _first, bidirectionalIterator _end, bidi
     reverse(__first, _end, bidirectionalIteratorTag());
     return false;
 }
+template <typename bidirectionalIterator>
+void shuffle(bidirectionalIterator _first, bidirectionalIterator _last, bidirectionalIteratorTag)
+{
+    if (_first + 1 >= _last)
+        return;
+    srand(time(NULL));
+    for (unsigned int j = 1; j < _last - _first; ++j)
+    {
+       unsigned int i = rand()% (j + 1);
+       swap(*(_first + i), *(_first + j));  
+    }
+}
 }
 
 int main()
 {
     int i = 0;
-#if 0 
-    while(i < 4)
-    {
- 
-        char a[] = "1234";
-        std::rotate(a, a + i, a + 4);
-        std::cout << a  << " " ;
-        std::next_permutation(a, a+ 4);
-        std::cout << a << std::endl;
-        ++i;
-   } 
-   i = 0;
-   std::cout << std::endl;
+#if 1 
 
  while(i < 9)
     {
@@ -96,7 +99,7 @@ int main()
         char a[] = "abcde1234";
         exercise::rotate<char *>(a, a + i, a + 9, exercise::bidirectionalIteratorTag());
         std::cout << a << "  ";
-        exercise::next_permute<char *>(a, a+ 9,exercise::bidirectionalIteratorTag());
+//        exercise::next_permutation<char *>(a, a+ 9,exercise::bidirectionalIteratorTag());
         std::cout << a << std::endl;
         ++i;
    }
