@@ -6,13 +6,14 @@ import java.lang.InterruptedException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Callable;
 
-public class Pager
+public class Pager extends Entity
 {
    private  Entity carrier;
    private final ExecutorService pagingCenter;
-   public Pager( ExecutorService pc)
+   public Pager( int id)
    {
-       this.pagingCenter = pc;
+       super(id);
+       this.pagingCenter = ParkingService.getService().getPagingCenter();
    }
    public void postMessage(Message m)
    {

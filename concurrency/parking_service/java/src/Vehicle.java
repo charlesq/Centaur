@@ -1,8 +1,9 @@
 //package com.charles.java.parking;
-public class  Vehicle extends Entity
+public class  Vehicle
 {
+   public final String licenseNum;
    public Vehicle(String licenseNum)
    {
-       super(licenseNum);
+       this.licenseNum = licenseNum;
    }
 }

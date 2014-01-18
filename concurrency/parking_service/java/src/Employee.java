@@ -5,27 +5,25 @@ public class Employee extends Entity
     private  boolean onDuty;
     public final String name;// Added name later !!! 
     private ParkingService firm;
-    public Employee (int id, ParkingService service)
+    public Employee (int id)
     {
         super(id);
         onDuty = false;
         name = "anonymous";
-        this.firm = service;
+        this.firm = ParkingService.getService();
     }
-     
-    synchronized void onShift()
+    synchronized void signIn()
     {
         onDuty = true;
+        pager = firm.getPager();
+        pager.setCarrier(this);
+        
     } 
-    synchronized void offDuty()
+    synchronized void signOff()
     {
-        returnPager();
+        pager.setCarrier(null);
+        firm.returnPager(pager);
         onDuty = false;
-    }
-    private void returnPager()
-    {
-    }
-    private void getPager()
-    {
+        pager = null;
     }
 }

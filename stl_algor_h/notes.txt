@@ -1,0 +1,10 @@
+partial STL <algorithm> library implemenation
+1. C part
+   swap
+   reverse
+   rotate (forwardIteratror and bidirectionalIterator)
+   next_permutation
+2. java part
+   swap
+   rotate
+   reverse
