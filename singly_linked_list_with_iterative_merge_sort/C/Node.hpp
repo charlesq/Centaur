@@ -8,14 +8,20 @@ class Node
     Node *nxt; 
 public:
     Node (void):nxt(NULL){};
-    Node(T v):value(v), nxt(NULL)
+    Node(T &&v):value(v), nxt(NULL)
     {
     };
-    Node (T v, Node<T> *n):value(v), nxt(n)
+    Node (T &v):value(v), nxt (NULL) {};
+    Node (T &&v, Node<T> *n):value(v), nxt(n)
     {
     };
-    inline T get_value(void) const
+    Node (T &v, Node<T> *n):value(v), nxt(n) {};
+    inline T &get_value(void) const
     {  
+        return value;
+    };
+    inline T get_value(void)
+    {
         return value;
     };
     inline void set_next(Node<T> *n)

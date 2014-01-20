@@ -4,8 +4,9 @@ import java.util.Collection;
 import java.lang.Number;
 import java.lang.UnsupportedOperationException;
 import java.util.NoSuchElementException;
+import java.lang.Comparable;
 
-public class SinglyLinkedList<T extends Number> implements Collection <T>
+public class SinglyLinkedList<T extends Comparable<T>> implements Collection <T>
 {
     private Node<T> head; 
     private int size;
@@ -138,5 +139,78 @@ public class SinglyLinkedList<T extends Number> implements Collection <T>
     {
         return o.equals(this); 
     }
-     
+    /* this is a bottom-up approach, it repeatedly sort sublists with length of 2^0, 2^1, ...
+        2^i; at each every step, e.g. to sort a sublist of length 2^i, it merges two contiguous
+        and sorted sublists of maximal length of 2^(i-1).
+
+        The catch is to identify all the sublists of length 2^(i-1) at each step and merge every 
+        consecutive two. 
+      
+    */  
+    public void mergeSort()
+    {
+         int ssize = 1;   
+         Node <T> pre = head;
+         while(true)
+         {
+             int _size = ssize;
+             while (pre != null && pre.next() != null)
+             {
+                 Node<T> middle = pre;
+                 /* get the middle,i.e. pre to the node of  the second segment */
+                 while(middle.next() != null && middle.next().next() != null && --_size != 0)
+                 middle = middle.next(); 
+                 int _first_seg_size = ssize, _second_seg_size = ssize - _size;
+                 /* we have a merge to do */ 
+                 while (_first_seg_size >0 || _second_seg_size > 0) 
+                 {
+                     if (_first_seg_size > 0 && _second_seg_size > 0)
+                     {
+                         if (pre.next().value().compareTo(middle.next().value()) >= 0)
+                         {
+                             pre = pre.next();
+                             --_first_seg_size;
+                         } 
+                         else
+                         {
+                             Node<T> T1 = pre.next(); 
+                             pre.setNext(middle.next());
+                             middle.setNext(middle.next().next());
+                             pre.next().setNext(T1);
+                             --_second_seg_size; 
+                             pre = pre.next();
+                         }
+                         continue;
+                     }
+                     if (_first_seg_size > 0)
+                         break;
+                     if (_second_seg_size > 0)
+                     {
+                        // already sorted, but we need to obtain the last node */
+                         --_second_seg_size;
+                         middle = middle.next();
+                     }
+                 }
+                 /* move to the next length of 2^i segment */
+                 pre = middle;
+             }
+             if (ssize < size())
+             {
+                 ssize >>>= 1;
+                 pre = head;
+             }
+             else
+                 break;
+         }
+    }  
+    private void swap(Node<T> a, Node <T> b)
+    {
+        T value = a.value();
+        a.setValue(b.value());
+        b.setValue(value);
+    } 
+    private void merge(Node<T> _pre, Node<T> _middle, Node <T> _end)
+    {
+       
+    } 
 }

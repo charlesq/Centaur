@@ -2,7 +2,7 @@
 import java.lang.Comparable;
 import java.lang.Iterable;
 import java.lang.Number;
-public class Node<T extends Number> 
+public class Node<T extends Comparable<T> > 
 {
      private  T value;
      private Node<T> next;
