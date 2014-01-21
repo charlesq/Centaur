@@ -1,0 +1,26 @@
+      Singly Linked List 
+
+1. Introduction
+ A node in a Singly Linked List has only reference to the next node in the list; hence
+a new key may only be added to node after an existing node or head in O(1) time, and 
+an exiting node may only be removed in reference to its predecessor in O(1) time.
+
+ Due this reference constrain, sorting methods, such as quick sort and heap sort, does not
+work efficiently as expected in NLongN time scale. Merge sort is probably the only efficient
+one. 
+
+ Recursive version of merge sort is easier to implement than an iterative version. For exercise
+purpose, the latter is implemented here.
+
+ 
+2. Notes on C++ Part
+
+As containers in STL, element data type may be customerized in usage.
+
+Operations are similar to those for stl::forwardlist, support insert_after, erase, iterator.
+
+3. Notes on JAVA Part
+
+Class SinglyLinkedList is a generic one and extends java.util.Collection.
+
+Elements must be comparable to run merge sort.

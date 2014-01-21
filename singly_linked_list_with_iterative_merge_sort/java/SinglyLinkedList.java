@@ -10,6 +10,11 @@ public class SinglyLinkedList<T extends Comparable<T>> implements Collection <T>
 {
     private Node<T> head; 
     private int size;
+    public SinglyLinkedList()
+    {
+        head = new Node<T>(null);
+        size = 0;
+    }
     @Override 
     public int size() 
     {
@@ -33,14 +38,14 @@ public class SinglyLinkedList<T extends Comparable<T>> implements Collection <T>
         @Override
         public boolean hasNext()
         {
-            return node != null;
+            return node.next() != null;
         }
         @Override
         public T next()
         {
-            if (node == null)
+            if (node == null ||  node.next() == null)
                 throw new NoSuchElementException();
-            T e = node.value();
+            T e = node.next().value();
             node = node.next();
             return e;
         }
@@ -75,9 +80,9 @@ public class SinglyLinkedList<T extends Comparable<T>> implements Collection <T>
     {
        Node<T> nd = new Node<T> (e);
        ++size;
-       if (head != null)
-            nd.setNext(head);
-       head = nd;
+       
+       nd.setNext(head.next());
+       head.setNext(nd);
        return true;        
     }
     @Override
@@ -131,7 +136,7 @@ public class SinglyLinkedList<T extends Comparable<T>> implements Collection <T>
     @Override
     public void clear()
     {
-        head = null;
+        head.setNext(null);
         size = 0;
     }
     @Override
@@ -153,25 +158,26 @@ public class SinglyLinkedList<T extends Comparable<T>> implements Collection <T>
          Node <T> pre = head;
          while(true)
          {
-             int _size = ssize >>>2;
-             if (_size == 0)
-                 ++_size;
+             
              while (pre != null && pre.next() != null)
              {
-                 Node<T> middle = pre.next();
+                 int _size = ssize >>>1;
+                 if (_size == 0)
+                     ++_size;
+                 Node<T> middle = pre;
                  /* get the middle,i.e. pre to the node of  the second segment */
-                 while(middle.next() != null && middle.next().next() != null && --_size != 0)
+                 while(middle != null && _size-- != 0)
                       middle = middle.next(); 
-                 int _first_seg_size = ssize >>> 2;
+                 int _first_seg_size = ssize >>> 1;
                  if (_first_seg_size == 0)
                      ++_first_seg_size;
                  int  _second_seg_size = ssize - _first_seg_size;
                  /* we have a merge to do */ 
                  while (_first_seg_size >0 || _second_seg_size > 0) 
                  {
-                     if (middle != null && middle.next() != null && _first_seg_size > 0 && _second_seg_size > 0)
+                     if (middle != null && middle.next() != null &&  _first_seg_size > 0 && _second_seg_size > 0)
                      {
-                         if (pre.next().value().compareTo(middle.next().value()) >= 0)
+                         if (pre.next().value().compareTo(middle.next().value()) <= 0)
                          {
                              pre = pre.next();
                              --_first_seg_size;
@@ -179,43 +185,34 @@ public class SinglyLinkedList<T extends Comparable<T>> implements Collection <T>
                          else
                          {
                              Node<T> T1 = middle.next(); 
-                             middle.setNext(T1.next());
+                             middle.setNext(middle.next().next());
                              T1.setNext(pre.next());
                              pre.setNext(T1);
+                             pre =T1; 
                              --_second_seg_size; 
-                             pre = pre.next();
                          }
                          continue;
                      }
-                     if (_first_seg_size > 0)
-                         break;
+                     _first_seg_size = 0;
                      if (_second_seg_size > 0 && middle != null)
                      {
                         // already sorted, but we need to obtain the last node */
                          --_second_seg_size;
                          middle = middle.next();
+                         continue;
                      }
+                     break;
                  }
                  /* move to the next length of 2^i segment */
                  pre = middle;
              }
              if (ssize < size())
              {
-                 ssize >>>= 1;
+                 ssize <<= 1;
                  pre = head;
              }
              else
                  break;
          }
     }  
-    private void swap(Node<T> a, Node <T> b)
-    {
-        T value = a.value();
-        a.setValue(b.value());
-        b.setValue(value);
-    } 
-    private void merge(Node<T> _pre, Node<T> _middle, Node <T> _end)
-    {
-       
-    } 
 }

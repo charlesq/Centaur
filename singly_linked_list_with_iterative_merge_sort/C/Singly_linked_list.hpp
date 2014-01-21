@@ -121,12 +121,12 @@ public:
                  size_t __first_seg_size  = _size / 2, __second_seg_size ;
                  if (__first_seg_size == 0)
                  __first_seg_size = 1;
-                 middle = NULL;
+                 middle = pre;
                  __second_seg_size = _size - __first_seg_size;
-                 while(pre != NULL && pre->get_next() != NULL &&  __first_seg_size != 0)
+                 while(middle != NULL  &&  __first_seg_size != 0)
                  {
                     -- __first_seg_size;
-                    middle = middle == NULL? pre->get_next(): middle->get_next();
+                    middle = middle->get_next();
                  }
                  __first_seg_size = _size / 2 == 0? 1: _size/2;
                  __second_seg_size = _size - __first_seg_size;
