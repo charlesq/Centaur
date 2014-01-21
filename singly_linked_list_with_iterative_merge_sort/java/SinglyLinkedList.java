@@ -153,18 +153,23 @@ public class SinglyLinkedList<T extends Comparable<T>> implements Collection <T>
          Node <T> pre = head;
          while(true)
          {
-             int _size = ssize;
+             int _size = ssize >>>2;
+             if (_size == 0)
+                 ++_size;
              while (pre != null && pre.next() != null)
              {
-                 Node<T> middle = pre;
+                 Node<T> middle = pre.next();
                  /* get the middle,i.e. pre to the node of  the second segment */
                  while(middle.next() != null && middle.next().next() != null && --_size != 0)
-                 middle = middle.next(); 
-                 int _first_seg_size = ssize, _second_seg_size = ssize - _size;
+                      middle = middle.next(); 
+                 int _first_seg_size = ssize >>> 2;
+                 if (_first_seg_size == 0)
+                     ++_first_seg_size;
+                 int  _second_seg_size = ssize - _first_seg_size;
                  /* we have a merge to do */ 
                  while (_first_seg_size >0 || _second_seg_size > 0) 
                  {
-                     if (_first_seg_size > 0 && _second_seg_size > 0)
+                     if (middle != null && middle.next() != null && _first_seg_size > 0 && _second_seg_size > 0)
                      {
                          if (pre.next().value().compareTo(middle.next().value()) >= 0)
                          {
@@ -173,10 +178,10 @@ public class SinglyLinkedList<T extends Comparable<T>> implements Collection <T>
                          } 
                          else
                          {
-                             Node<T> T1 = pre.next(); 
-                             pre.setNext(middle.next());
-                             middle.setNext(middle.next().next());
-                             pre.next().setNext(T1);
+                             Node<T> T1 = middle.next(); 
+                             middle.setNext(T1.next());
+                             T1.setNext(pre.next());
+                             pre.setNext(T1);
                              --_second_seg_size; 
                              pre = pre.next();
                          }
@@ -184,7 +189,7 @@ public class SinglyLinkedList<T extends Comparable<T>> implements Collection <T>
                      }
                      if (_first_seg_size > 0)
                          break;
-                     if (_second_seg_size > 0)
+                     if (_second_seg_size > 0 && middle != null)
                      {
                         // already sorted, but we need to obtain the last node */
                          --_second_seg_size;

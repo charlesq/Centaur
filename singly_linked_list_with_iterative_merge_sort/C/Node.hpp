@@ -16,10 +16,6 @@ public:
     {
     };
     Node (T &v, Node<T> *n):value(v), nxt(n) {};
-    inline T &get_value(void) const
-    {  
-        return value;
-    };
     inline T get_value(void)
     {
         return value;
@@ -28,7 +24,7 @@ public:
     {
         nxt = n;
     };
-    inline const Node<T>* get_next(void) const
+    inline  Node<T>* get_next(void) 
     {
         return nxt;
     };
