@@ -15,7 +15,7 @@ purpose, the latter is implemented here.
  
 2. Notes on C++ Part
 
-As containers in STL, element data type may be customerized in usage.
+As containers in STL, element data type may be customerized in use.
 
 Operations are similar to those for stl::forwardlist, support insert_after, erase, iterator.
 
