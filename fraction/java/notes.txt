@@ -1,0 +1,9 @@
+ Problem statement:
+
+Given two integers to form a fraction, with firth first one as the nummerator and the second as denominator.
+produce the equivalent decimal number in a string format. If the any portion of the fracton part is repeating,
+enclose the portion with a pair of parenthesis.  you have to consider the cases of the input number being either 
+positive ,negative and zero.
+
+
+program the solution in both C and JAVA. 

@@ -103,7 +103,6 @@ class Fraction extends Object
          System.out.println("quotient is " + f.toString());
          System.out.print("Exit(Y/N)"); 
          String str = br.readLine();
-         System.out.println(str + str.length());
          if (str.equalsIgnoreCase("Y"))
              break;
          System.out.println("Input the numerator:");
