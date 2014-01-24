@@ -1,0 +1,31 @@
+                     Graph Algorithms
+1. Overview 
+   A graph is an abstract representation of a set of peer entities with possible homogeneous relationships 
+   any two invidual entities.  
+ 
+   There are many operations on topology common to graphs of all kinds, such as traversing all vertices,
+   finding a tree subgraph spanning all composing vertices with certain special properties, finding a path
+   linking two non-adjacent vertices satisfying certain constraints, and so forth. 
+
+   Generally, the way adjacency is reprsetned significantly affects the time complexity in carrying 
+   out those   operations. It is indisputable that the linked adajacency list is more efficient than a 
+   corresponding matrix representation.
+
+   In this exercise, BFS, DFS,Kruskal and Prim algorithms are implemented. 
+
+   Both Kruskal and Prim fall into the category of greedy algorithsm, the two differ in a few aspects.
+   Kruskal does not require adjacency scanning on a vertex, it simmply collects all the edge/link 
+   information, and run a global sorting once, this approach makes it little use for graphs with varying 
+   weights or changing link status. Also notable that, in execution, every time an edge is selected, there 
+   is no gurantee that edges already selected form a tree structure.   
+
+   Prim follows a breadth first approach, each time an edge selected, all selected edges form a minimal
+   spanning for the ever-growing subgraph which has been explored. The computing of MST can be localized and    distributed, this makes Prim widely used in network switch applications. 
+   
+   Prim algoriths by itself can only find one minimal spanning tree; multiple passes are demanded to obtain
+   minimal spanning tree forests in the graph if the graph is composed of several undisconnected subgraphs.   
+2. Additional Notes on C++ Part
+
+3. Additional Notes on Java Part
+   imported from Thalia repository.
+   (eventually, Thalia repo will be phased out.) 
