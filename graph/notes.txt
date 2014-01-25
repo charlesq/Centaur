@@ -20,7 +20,8 @@
    is no gurantee that edges already selected form a tree structure.   
 
    Prim follows a breadth first approach, each time an edge selected, all selected edges form a minimal
-   spanning for the ever-growing subgraph which has been explored. The computing of MST can be localized and    distributed, this makes Prim widely used in network switch applications. 
+   spanning for the ever-growing subgraph which has been explored. The computing of MST can be localized and
+    distributed, this makes Prim widely used in network switch applications. 
    
    Prim algoriths by itself can only find one minimal spanning tree; multiple passes are demanded to obtain
    minimal spanning tree forests in the graph if the graph is composed of several undisconnected subgraphs.   
@@ -28,4 +29,4 @@
 
 3. Additional Notes on Java Part
    imported from Thalia repository.
-   (eventually, Thalia repo will be phased out.) 
+   (eventually, Thalia repo will retire.) 
