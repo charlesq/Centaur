@@ -48,30 +48,33 @@ public class SkipList <T extends Comparable<T>>
                 }
                 if (k.compareTo(curr[level].key) == 0)
                 {
-                      for (int i = level; i >= 0; --i)
+                      /* remove curr from the sequence in the current layer */
+                      if (level != 0)
                       {
-                          if (i > 0)
+                          if (prev[level] == null)
                           {
-                             if (prev[i] == null)
-                             {
-                                 prev[i-1] = null;
-                                 Node<T> next = root[i-1];
-                                 while (next != curr[i] && next.next[i-1] != curr[i])
-                                 {
-                                     next = next.next[i-1];
-                                 }
-                                 if (next != root[i-1])
-                                     prev[i-1] = next;
-                             }
-                             curr[i-1] = curr[i];
+                              root[level] = curr[level].next[level-1];
+                              curr[level -1] = curr[level--];
+                              continue;
                           } 
-                          if (prev[i] != null)
-                              prev[i].next[i] = curr[level].next[i]; 
-                          else
-                              root[i] = curr[i].next[i];
-                          
-                      } 
-                      return;
+                          if (prev[level].next[level -1] != curr[level])
+                          { 
+                              prev[level-1] = prev[level].next[level -1];
+                              curr[level-1] = curr[level--];
+                              continue;
+                          }
+                          prev[level].next[level] = curr[level].next[level];
+                          prev[level-1] = prev[level];
+                          curr[level-1] = curr[level--];
+                          continue;
+                      }
+                      if (prev[level] == null)
+                      {
+                          root[level] = curr[level].next[level];
+                      }
+                      else
+                          prev[level].next[level] = curr[level].next[level];
+                      break;
                 }
                 if (k.compareTo(curr[level].key) > 0)
                 {
@@ -92,6 +95,9 @@ public class SkipList <T extends Comparable<T>>
                    prev[level-1] = prev[level--];
                  }
             }
+            /* reset curr and prev so the removed node is eligible for gabage collection */
+            Arrays.fill(curr, null);
+            Arrays.fill(prev, null);
         }
         return; 
     }
@@ -173,8 +179,15 @@ public class SkipList <T extends Comparable<T>>
                {
                    /* curr[level-1] falls back to prev[level].next[level-1]
                       for the time being */ 
-                   curr[level -1] = prev[level].next[level -1];
-                   prev[level -1] = prev[level--];
+                   if (prev[level].next[level-1] != null)
+                   {
+                       curr[level-1] = prev[level].next[--level];
+                   }
+                   else
+                   {
+                       curr[level -1] = prev[level].next[level -1];
+                       prev[level -1] = prev[level--];
+                   }
                }
             }
             else
@@ -192,8 +205,17 @@ public class SkipList <T extends Comparable<T>>
                 }
                 else
                 {
-                   prev[level -1] = prev[level];
-                   curr[level -1] = curr[level--]; 
+                   if ( prev[level] != null && prev[level].next[level-1] != curr[level])
+                   {
+                       curr[level-1] = prev[level].next[level -1];
+                       prev[level -1] = prev[--level];
+                    
+                   }
+                   else
+                   {
+                       prev[level -1] = prev[level];
+                       curr[level -1] = curr[level--]; 
+                   }
                 }
             }
             return insert(k, level);
@@ -211,13 +233,12 @@ public class SkipList <T extends Comparable<T>>
              if (c == null && p == null)
              {
                  c = root[--level];
-                 p = c;
+                 p = null;
                  continue;
              }
              if (c == null)
              {
-                 c = root[--level];
-                 p = c;
+                 c = p.next[--level];
              }
              if (k.compareTo(c.key) == 0)
                  return true;
