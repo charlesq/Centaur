@@ -1,0 +1,25 @@
+            Skip List
+1. Brief Algorithmic Description
+On par with self-balanced tree structures in performance, skip list features simpler implementation.  
+
+In a skiplist structure, the bottom layer is a sorted singly linked list, elements at a higher layer 
+are references to elements at the layer beneath, selected randomly per a fixed probability; as a 
+result, search/insert/remove operations may acheive O(logN) time complexity by navigating from top and
+dropping down to narrow search space. 
+
+Skip list requires more space to maintain a linked list hierachy than a singly linked list storing same number of sorted elements. 
+
+In java 1.6 API, skip list is utilized in ConcurrentSkipListSet and ConcurrentSkipListMap.
+
+2. Implementation Notes
+
+In insert operation, the insertion point must be preserved with two consecutive elements for each layer. After the new element is inserted at the bottom layer, for each linked list on  upper layer selected to add reference to the new element, the previously preserved insertion point will be utilized. If the new element is inserted to the head of the linked list on a layer, the head reference should be updated as well.
+
+In remove operation, when conducting a search from the top, once the element matching the key has
+ been identified on a layer, the element preceding the matching element must updated its reference 
+to the element following matching element's next element; if the matching element is the first linked
+ list element, the head reference must be updated too.  
+ 
+The search operation is less complex, no preceding and current elements needs to be preserved. 
+
+To secure and facilitate concurrent processing, the skip list is protected by a read/write lock. 

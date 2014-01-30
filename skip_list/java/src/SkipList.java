@@ -2,6 +2,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.lang.Comparable;
 import java.lang.Integer;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 public class SkipList <T extends Comparable<T>>
 {
     private final int maxLevel;
@@ -13,6 +14,7 @@ public class SkipList <T extends Comparable<T>>
    /* the rand function to determine presence level for a node */
     private Random rand;
     private static final int defaultLevels = 4;
+    private ReentrantReadWriteLock rwlock; // to secure concurrent access 
     @SuppressWarnings({"unchecked", "rawtypes"})
     public SkipList(int maxLevel)
     {
@@ -24,6 +26,7 @@ public class SkipList <T extends Comparable<T>>
         prev = new Node  [maxLevel];
         Arrays.fill(prev, null);
         rand = new Random();
+        rwlock = new ReentrantReadWriteLock();
     }
     public SkipList()
     {
@@ -31,8 +34,7 @@ public class SkipList <T extends Comparable<T>>
     }
     public  void remove(T k)
     {
-        synchronized (this)
-        {
+            rwlock.writeLock().lock();
             int level = maxLevel -1;
             Arrays.fill(prev, null);
             Arrays.fill(curr, null);
@@ -98,15 +100,13 @@ public class SkipList <T extends Comparable<T>>
             /* reset curr and prev so the removed node is eligible for gabage collection */
             Arrays.fill(curr, null);
             Arrays.fill(prev, null);
-        }
+            rwlock.writeLock().unlock();
         return; 
     }
     public void removeAll()
     {
-         synchronized (this)
-         {
+             
              Arrays.fill(root, null);
-         }
     }
     public boolean isEmpty()
     {
@@ -139,14 +139,17 @@ public class SkipList <T extends Comparable<T>>
     }
     public boolean insert(T k)
     {
-        synchronized (this)
+        boolean newElem = true;
+        rwlock.writeLock().lock();
         {
             Arrays.fill(curr, null);
             Arrays.fill(prev, null);
             curr[maxLevel -1] = root[maxLevel-1];
             prev[maxLevel-1] = null;
-            return insert(k, maxLevel -1);
+            newElem =  insert(k, maxLevel -1);
          }
+         rwlock.writeLock().unlock();
+         return newElem;
     }
 
     /* Before inserting a new key, the consecutive nodes, i.e. pre and cur nodes at each level 
@@ -226,7 +229,9 @@ public class SkipList <T extends Comparable<T>>
     }
     public boolean search(T k)
     {
+        rwlock.readLock().lock();
         int level = maxLevel;
+        boolean found = false;
         Node <T> p = null, c = p; // prev and cur node at current layer */  
         while (level > 0)
         {
@@ -241,7 +246,10 @@ public class SkipList <T extends Comparable<T>>
                  c = p.next[--level];
              }
              if (k.compareTo(c.key) == 0)
-                 return true;
+             {
+                 found = true;
+                 break;
+             }
               if (k.compareTo(c.key) > 0)
               {
                   p = c;
@@ -258,7 +266,8 @@ public class SkipList <T extends Comparable<T>>
               else
                   c = p.next[--level];
         }
-        return false;
+        rwlock.readLock().unlock();
+        return found;
     }
     /* this method is for testing purpose */
     Node <T> [] getRoot()
