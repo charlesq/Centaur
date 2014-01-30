@@ -105,8 +105,10 @@ public class SkipList <T extends Comparable<T>>
     }
     public void removeAll()
     {
-             
-             Arrays.fill(root, null);
+     
+        rwlock.writeLock().lock();       
+        Arrays.fill(root, null);
+        rwlock.writeLock().unlock();
     }
     public boolean isEmpty()
     {
