@@ -14,7 +14,7 @@ public:
     node(T k, size_t sz):key(k)
     {
         node *n = NULL;
-        next.resize(sz, n);
+        next.resize(sz);
     };
     node *get_next(size_t sz)
     {
@@ -22,12 +22,17 @@ public:
             return NULL;
         return next[sz];
     };
+    vector<node<T>*> & get_next(void)
+    {
+        return next;
+    };
     T get_key(void) const
     {
         return key;
     };
     virtual ~node()
     {
+        next.clear();
     };
 };
 
