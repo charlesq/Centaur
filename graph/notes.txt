@@ -11,7 +11,8 @@
    out those   operations. It is indisputable that the linked adajacency list is more efficient than a 
    corresponding matrix representation.
 
-   In this exercise, BFS, DFS,Kruskal and Prim algorithms are implemented. 
+   In this exercise, BFS, DFS,Kruskal and Prim algorithms, Kosaraju's Strongly Connected Component Algorithm
+   are implemented. 
 
    Both Kruskal and Prim fall into the category of greedy algorithsm, the two differ in a few aspects.
    Kruskal does not require adjacency scanning on a vertex, it simmply collects all the edge/link 

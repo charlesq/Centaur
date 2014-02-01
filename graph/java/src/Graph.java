@@ -99,26 +99,32 @@ public class Graph
         init(g);
     }
     @SuppressWarnings("unchecked")
-    public Graph(Graph g, boolean transpose)
+    public Graph(Graph gh, boolean transpose)
     {
         if (!transpose)  
-            init(g);
-        V = g.V();
-        E = g.E();
+        {
+            init(gh);
+            return;
+        }
+        V = gh.V();
+        E = gh.E();
         Adj = new ArrayList [V];
+         for (int i = 0; i < V; i ++)
+             Adj[i] = new ArrayList<Edge> ();
         List<Edge> l;
         Iterator<Edge> it;
         Edge e;
         Edges = new ArrayList<Edge> ();
-        while(--V >= 0)
+        int v = V;
+        while(--v >= 0)
         {
-            l = Adj[V];
+            l = gh.Adj(v);
             it = l.iterator();
             while(it.hasNext())
             {
                 e = it.next();
                 Edge edge = new Edge(e.o(), e.e(),  e.w());
-                Adj[e.e()].add(edge);
+                Adj[e.o()].add(edge);
                 Edges.add(edge);
             }
         }

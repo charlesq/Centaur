@@ -11,12 +11,12 @@
    </target>
    <target name="buildsrc"  description="compile the source">
         <mkdir dir="${build}"/>
-        <javac srcdir= "${src}" destdir="${build}"/>
+        <javac srcdir= "${src}" destdir="${build}" debug="true"/>
         <javac srcdir= "${test}" destdir="${build}"/>
    </target>
    <target name="clean">
         <delete> 
-            <fileset dir=".">
+            <fileset dir="bin">
                 <include name ="*.class"/>
                 <include name ="*.jar"/>
             </fileset>

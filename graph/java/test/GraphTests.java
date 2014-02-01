@@ -9,7 +9,7 @@ import org.junit.runner.JUnitCore;
 @SuiteClasses({
     TestSearch.class,
     TestMST.class,
- 
+    TestKosaraju.class,
 })
 
 class GraphTests

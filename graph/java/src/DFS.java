@@ -10,7 +10,7 @@ public class DFS
     final Graph g;
     Action discovered; /* action to take when discovered */
     Action explored;   /* action to take when fully explored*/      
-    int [] vstate; /* 0 denotes undiscovered, 1 denotes discoverd, 2 denotes explored */ 
+    int [] vstate; /* false denotes undiscovered, 1 denotes discoverd, 2 denotes explored */ 
     public DFS(Graph g)
     {
         this.g = g;
@@ -27,7 +27,17 @@ public class DFS
     {
         this.explored = ae;
     }
-    /* starts search from vertex v
+    public void reset()
+    {
+        Arrays.fill(vstate, 0, g.V(), 0);
+    }
+    /* for use in Kosaraju's SCC algorithm */
+    public int [] color()
+    {
+        return vstate;
+    }
+    
+    /* starts a round of search  from vertex v
      * 
      */
     public void search (int v)     
