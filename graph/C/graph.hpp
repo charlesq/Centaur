@@ -40,6 +40,29 @@ public:
        }
        ism.close();
    };
+   /* this shall only apply to directed graph */
+   graph(const graph &gh, bool transpose)
+   {
+       V = gh.get_v();
+       const forward_list<const edge *> & gedges = gh.get_edges();
+       adj.resize(V);
+       
+       for (const edge* e: gedges)
+       {
+          edge *eg;
+          if (transpose)
+          {
+              eg = new edge(e->get_o(), e->get_v(), e->get_w());
+              adj[e->get_o()].push_front(eg);
+          } 
+          else
+          {
+             eg = new edge(e->get_v(), e->get_o(), e->get_w()); 
+             adj[e->get_v()].push_front(eg);
+          } 
+          edges.push_front(eg);
+       }
+   }; 
    inline unsigned int get_v(void) const { return V; };
    inline const forward_list<const edge *> & get_adj(unsigned int v) const { return adj[v]; }; 
    inline const forward_list<const edge *> & get_edges(void) const { return edges; };

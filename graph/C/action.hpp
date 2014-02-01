@@ -5,10 +5,31 @@ using namespace std;
 class action
 {
 public:
-   void act(unsigned int v, string msg) const
-   {
-       cout << msg << v << endl;
-   };
+   virtual void act(unsigned int v) const = 0;
 };
 
+class default_discovered: public action
+{
+public:
+    virtual void act(unsigned int v) const
+    {
+        cout << "discovered " << v << endl;
+    };
+};
+class default_exploring: public action
+{
+public:
+    virtual void act(unsigned int v) const
+    {
+        cout << "explring " << v << endl;
+    };
+};
+class default_explored: public action
+{
+public:
+    virtual void act(unsigned int v) const
+    {
+        cout << "explored " << v << endl;
+    }; 
+};
 #endif

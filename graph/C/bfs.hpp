@@ -9,12 +9,13 @@ class BFS
 {
     enum {UNDISCOVERED = 0, DISCOVERED, EXPLORED};
     const graph &g;
-    action act;
+    action *discovered, *exploring, *explored;
     std::vector<unsigned int> colors;
     std::queue<unsigned int, std::deque<unsigned int>> q;/* vertices waited to be examined */ 
 public:
     BFS(const graph &gh):g(gh)
     {
+        discovered = exploring = explored = NULL;
     };
     void operator () (unsigned int v = 0)
     {
@@ -22,14 +23,28 @@ public:
         colors.clear();
         colors.resize(g.get_v(), c);
         colors[v] = DISCOVERED;
-        act.act(v, "discovered ");
+        if (discovered != NULL)
+            discovered->act(v);
         q.push(v);
         run(); 
+    };
+    void set_discovered_action(action *a)
+    {
+        discovered = a;
+    };
+    void set_explored_action(action *a)
+    {
+        explored = a;
+    };
+    void set_exploring_action(action *a)
+    {
+        exploring = a;
     };
 private:
     void scan(unsigned int v)
     {
-        act.act(v, " exploring "); 
+        if (exploring != NULL)
+           exploring->act(v); 
         const forward_list<const edge *> &adj = g.get_adj(v); 
         int o;
         for (const edge *e: adj)
@@ -38,11 +53,13 @@ private:
             if (colors[o] == UNDISCOVERED)
             {
                 colors[o] = DISCOVERED;
-                act.act(o, "discovered ");
+                if (discovered != NULL)
+                    discovered->act(o);
                 q.push(o);
             }
         }
-        act.act(v, "explored ");
+        if (explored != NULL)
+            explored->act(v);
     };
     void run(void)
     {

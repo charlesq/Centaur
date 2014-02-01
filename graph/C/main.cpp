@@ -9,6 +9,12 @@ int main()
     graph g("graph.txt");
     DFS dfs(g);
     BFS bfs(g);
+    dfs.set_discovered_action(new default_discovered());
+    dfs.set_exploring_action(new default_exploring());
+    dfs.set_explored_action(new default_explored());
+    bfs.set_discovered_action(new default_discovered());
+    bfs.set_exploring_action(new default_exploring());
+    bfs.set_explored_action(new default_explored());
     std::cout << "running depth first search " << std::endl;
     dfs(0);
     std::cout << "running breadth first search " << std::endl;

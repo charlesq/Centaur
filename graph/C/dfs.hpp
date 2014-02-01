@@ -8,11 +8,12 @@ class DFS
 {
     enum {UNDISCOVERED = 0, DISCOVERED, EXPLORED };
     const graph & g;
-    action act;
+    action *discovered, *exploring, *explored;
     std::vector<unsigned int > colors; 
  public:
     DFS(const graph &gh): g(gh)
     {
+        discovered = exploring = explored = 0;
     };
     void operator ()(unsigned int v = 0)
     {
@@ -21,6 +22,18 @@ class DFS
         colors.resize(g.get_v(), c);
         run(v);
     };
+    void set_discovered_action(action * a)
+    {
+        discovered = a;
+    };
+    void set_explored_action(action *a)
+    {
+       explored = a;
+    };
+    void set_exploring_action(action *a)
+    {
+       exploring = a;
+    };
 private:
     void run(unsigned int v)
     {
@@ -28,15 +41,18 @@ private:
             return;
         
         colors[v] = DISCOVERED; 
-        act.act(v, "discovered ");
-        act.act(v, "  exploring ");
+        if (discovered != NULL)
+            discovered->act(v);
+        if (exploring != NULL)
+            exploring->act(v);
         const std::forward_list<const edge *> adj = g.get_adj(v);
         for (const edge *e: adj)
         {
             unsigned int o = e->get_v() == v? e->get_o(): e->get_v();
             run(o);
         }
-        act.act(v, "explored "); 
+        if (explored != NULL)
+           explored->act(v); 
     };
 public:
     virtual ~DFS()
