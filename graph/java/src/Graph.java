@@ -24,7 +24,7 @@ public class Graph
     int V; 
     int E;
     List<Edge> [] Adj;  
-    ArrayList<Edge>  Edges;
+    List<Edge>  Edges;
     @SuppressWarnings("unchecked")
     public Graph(String fn, boolean directed) 
     {
@@ -126,5 +126,5 @@ public class Graph
     public int V() { return V; } 
     public int E() { return E; } 
     public final List<Edge> Adj(int v) { return Adj[v]; } 
-    public ArrayList<Edge> Edges() { return Edges; }
+    public List<Edge> Edges() { return Edges; }
 }
