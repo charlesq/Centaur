@@ -5,13 +5,13 @@ using namespace std;
 class action
 {
 public:
-   virtual void act(unsigned int v) const = 0;
+   virtual void act(unsigned int v) = 0;
 };
 
 class default_discovered: public action
 {
 public:
-    virtual void act(unsigned int v) const
+    virtual void act(unsigned int v) 
     {
         cout << "discovered " << v << endl;
     };
@@ -19,7 +19,7 @@ public:
 class default_exploring: public action
 {
 public:
-    virtual void act(unsigned int v) const
+    virtual void act(unsigned int v)
     {
         cout << "explring " << v << endl;
     };
@@ -27,7 +27,7 @@ public:
 class default_explored: public action
 {
 public:
-    virtual void act(unsigned int v) const
+    virtual void act(unsigned int v)
     {
         cout << "explored " << v << endl;
     }; 

@@ -6,7 +6,10 @@
 #include "action.hpp"
 class DFS
 {
+
+public:
     enum {UNDISCOVERED = 0, DISCOVERED, EXPLORED };
+private:
     const graph & g;
     action *discovered, *exploring, *explored;
     std::vector<unsigned int > colors; 
@@ -33,6 +36,10 @@ class DFS
     void set_exploring_action(action *a)
     {
        exploring = a;
+    };
+    const std::vector<unsigned int> & get_color() const 
+    {
+        return colors;
     };
 private:
     void run(unsigned int v)
