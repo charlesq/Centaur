@@ -11,7 +11,7 @@
    out those   operations. It is indisputable that the linked adajacency list is more efficient than a 
    corresponding matrix representation.
 
-   In this exercise, BFS, DFS,Kruskal and Prim algorithms, Kosaraju's Strongly Connected Component Algorithm
+   In this exercise, BFS, DFS,Kruskal, Prim, Kosaraju's Strongly Connected Component Algorithm
    are implemented. 
 
    Both Kruskal and Prim fall into the category of greedy algorithsm, the two differ in a few aspects.
@@ -27,7 +27,6 @@
    Prim algoriths by itself can only find one minimal spanning tree; multiple passes are demanded to obtain
    minimal spanning tree forests in the graph if the graph is composed of several undisconnected subgraphs.   
 2. Additional Notes on C++ Part
-
+   BFS, DFS, Kruskal, Prim, Kosaraju's algorithms.
 3. Additional Notes on Java Part
-   imported from Thalia repository.
-   (eventually, Thalia repo will retire.) 
+   BFS, DFS, Kruskal, Prim, Kosaraju's algorithms.

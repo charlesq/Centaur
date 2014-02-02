@@ -29,6 +29,7 @@ public:
     prim(const graph &g):mst(g) {};
     forward_list<const edge *> operator () (unsigned int v = 0)
     {
+#if 1 
        mstree.clear();
        unsigned int c = UNDISCOVERED;
        colors.resize(g.get_v(), c); 
@@ -50,7 +51,13 @@ public:
           w += e->get_w();
        }
        print_mst();
+#endif
+       return mstree;
        
+    };
+    virtual ~prim()
+    {
+        colors.clear();
     };
 };
 

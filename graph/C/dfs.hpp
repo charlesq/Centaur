@@ -17,6 +17,9 @@ private:
     DFS(const graph &gh): g(gh)
     {
         discovered = exploring = explored = 0;
+        unsigned int c = UNDISCOVERED;
+        colors.resize(0);
+        colors.resize(g.get_v(), c);
     };
     void operator ()(unsigned int v = 0)
     {
@@ -41,7 +44,7 @@ private:
     {
         return colors;
     };
-private:
+public:
     void run(unsigned int v)
     {
         if (colors[v] != UNDISCOVERED)

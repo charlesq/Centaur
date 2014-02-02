@@ -15,6 +15,7 @@ public:
     virtual std::forward_list<const edge *> operator()(unsigned int v = 0)=0;
     virtual ~mst()
     {
+        mstree.clear();
     };
     virtual void print_mst(void) const
     {

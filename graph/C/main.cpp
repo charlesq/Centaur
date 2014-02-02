@@ -4,6 +4,7 @@
 #include "mst.hpp"
 #include "kruskal.hpp"
 #include "prim.hpp"
+#include "kosaraju.hpp"
 int main()
 {
     graph g("graph.txt");
@@ -27,5 +28,8 @@ int main()
     mst *pral = new prim(g);
     (*pral)();
     delete pral;
+    graph gh("graph.txt", true);
+    kosaraju ko(gh);
+    ko.run();
     return 0;
 }
